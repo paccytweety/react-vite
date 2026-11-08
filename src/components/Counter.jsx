@@ -1,11 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Button from './Button'
 
 const Counter = () => {
   const [count, setCount] = useState(0)
+  // previousCount è necessario solo se vogliamo mostrare il valore nel render
   const [previousCount, setPreviousCount] = useState(0)
 
   const updateCounter = (value) => {
+    console.warn('New count:', value)
+    console.warn('Old count:', count)
+    // lo setto solo perche è un valore che voglio mostrare nel render
+    // altrimenti mi bastava recuperarlo da count se mi serviva solo in questa funzione
     setPreviousCount(count)
     setCount(value)
   }

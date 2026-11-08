@@ -1,15 +1,28 @@
 
 import { useState } from 'react';
 import { flattenObject, getLastObjectKey } from '../utils';
-import SearchBox from './SearchBox';
+// import SearchBoxuseRef from './SearchBoxuseRef';
+import SearchBoxUseMemo from './SearchBoxUseMemo';
 
 const Users = (props) => {
   const { userList } = props;
   const [query, setQuery] = useState('');
-  const normalizedQuery = query.trim().toLowerCase();
-  const filteredUsers = userList.filter((user) =>
-    `${user.firstName} ${user.lastName}`.toLowerCase().includes(normalizedQuery)
-  );
+  
+  const searchTerms = query.trim().toLowerCase().split(/\s+/)
+  console.warn('Search terms:', searchTerms);
+  const filteredUsers = userList.filter((user) => {
+    const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+    
+    // Usare every se la ricerca deve includere entrambe le parole chiave
+    // Esempio se esiste Mario Rossi e cerco "Mario Verdi" la ricerca mi dice
+    // che non ci sono risultati perche sia nome che cognome devono corrispondere
+    //return searchTerms.every((term) => fullName.includes(term));
+    
+    // Usare some invece sa basta che almeno una parola chiave corrisponda
+    // Esempio se esiste Mario Rossi e cerco "Mario Verdi" la ricerca mi dice
+    // che ci sono risultati perche il nome esiste
+    return searchTerms.some((term) => fullName.includes(term));
+  });
   const flattenedUsers = filteredUsers.map((user) => flattenObject(user));
   const tableColumnKeys = Object.keys(flattenedUsers[0] ?? {});
   const addressColumnKeys = tableColumnKeys
@@ -17,7 +30,8 @@ const Users = (props) => {
 
   return(
     <>
-      <SearchBox onSearch={setQuery} />
+      {/* <SearchBoxuseRef onSearch={setQuery} /> */}
+      <SearchBoxUseMemo onSearch={setQuery} />
       <ul>
         {filteredUsers.map((user) => {
           return <li key={user.id}>{user.firstName}, {user.id}</li>

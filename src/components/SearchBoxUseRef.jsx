@@ -3,14 +3,15 @@ import { useRef } from 'react';
 // e per forzare il focus dopo la pulizia dell'input per accessibilità
 // In alternativa si poteva anche usare useState e un inpunt controllato
 // const [value, setValue] = useState('')
+// la variante con useState è presente in Counter.jsx
 
-const SearchBox = ({ onSearch }) => {
+const SearchBoxuseRef = ({ onSearch }) => {
   const inputRef = useRef(null);
   const previousValue = useRef('');
-console.warn('SearchBox rendered');
+
   const handleChange = (e) => {
     const newValue = e.target.value;
-    console.warn('Previous value:', previousValue.current, 'New value:', newValue);
+    // console.warn('Previous value:', previousValue.current, 'New value:', newValue);
     previousValue.current = newValue;
     onSearch(newValue);
   };
@@ -36,4 +37,4 @@ console.warn('SearchBox rendered');
   );
 };
 
-export default SearchBox;
+export default SearchBoxuseRef;
