@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Counter from './components/Counter'
 import './App.css'
 import Users from './components/Users'
+import PrimesDemo from './components/PrimesDemo'
 
 const USER_API = 'https://dummyjson.com/users?limit=5'
 // const SINGLE_USER_API = 'https://dummyjson.com/users/1'
@@ -22,8 +23,11 @@ function App() {
   return (
     <>
       <section id="center">
-        <h1>Get started</h1>
+        <h1>UseMemo Demo</h1>
+        <PrimesDemo />
+        <h1>Counter</h1>
         <Counter />
+        <h1>Filtered Users</h1>
         <Users userList={customUsers}/>
       </section>
 

@@ -1,5 +1,21 @@
 export const getLastObjectKey = (value) => value.slice(value.lastIndexOf('.') + 1);
 
+// Divisione per tentativi, volutamente lenta: serve a mostrare il costo di un calcolo
+export const countPrimes = (limit) => {
+  let count = 0;
+  for (let n = 2; n <= limit; n++) {
+    let isPrime = true;
+    for (let d = 2; d * d <= n; d++) {
+      if (n % d === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    if (isPrime) count++;
+  }
+  return count;
+};
+
 export const flattenObject = (obj, prefix = '') => {
   return Object.keys(obj).reduce((acc, k) => {
     const pre = prefix.length ? prefix + '.' : '';
