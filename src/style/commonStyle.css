@@ -124,6 +124,21 @@
   background: var(--accent-bg);
 }
 
+/* Struttura pagina */
+.mainContent {
+  flex: 1;
+  padding: 24px;
+}
+
+footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  text-align: center;
+}
+
 /* Schermi stretti */
 @media (max-width: 640px) {
   .row-wrap-sm {

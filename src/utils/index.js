@@ -27,3 +27,13 @@ export const flattenObject = (obj, prefix = '') => {
     return acc;
   }, {});
 };
+
+export const splitQueryParams = (queryString) => {
+  const splittedQuery = {}
+  const paramsToBeSplitted = new URLSearchParams(queryString);
+  for (const param of paramsToBeSplitted.entries()) {
+    const [key, value] = param;
+    splittedQuery[key] = value;
+  }
+  return splittedQuery;
+}
