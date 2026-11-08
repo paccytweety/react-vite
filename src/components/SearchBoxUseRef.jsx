@@ -24,14 +24,15 @@ const SearchBoxuseRef = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <div className="row">
       <input
+        className="input"
         ref={inputRef}
         type="text"
         placeholder="Cerca per nome"
         onChange={handleChange}
       />
-      <button type="button" onClick={handleClear}>Pulisci</button>
+      <button className="btn" type="button" onClick={handleClear}>Pulisci</button>
       {}
     </div>
   );

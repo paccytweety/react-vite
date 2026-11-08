@@ -16,14 +16,15 @@ const SearchBoxUseState = ({ onSearch }) => {
   };
 
   return (
-    <div>
+    <div className="row">
       <input
+        className="input"
         type="text"
         placeholder="Cerca useMemo"
         onChange={handleChange}
         value={value}
       />
-      <button type="button" onClick={handleSearch}>Cerca</button>
+      <button className="btn" type="button" onClick={handleSearch}>Cerca</button>
     </div>
   );
 };

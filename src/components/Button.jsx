@@ -1,7 +1,7 @@
 const Button = (props) => {
   const { onClick, cta, value } = props;
   return (
-    <button onClick={() => onClick(value || null)}>
+    <button className="btn" onClick={() => onClick(value || null)}>
       {cta}
     </button>
   );

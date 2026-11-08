@@ -41,7 +41,7 @@ const Users = (props) => {
       {query && filteredUsers.length === 0 ? <p>Nessun risultato</p> : null}
 
       {flattenedUsers && flattenedUsers.length > 0 ? (
-        <table>
+        <table className="table">
           <thead>
             <tr>
               {addressColumnKeys.map((key) => (

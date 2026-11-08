@@ -24,11 +24,12 @@ const PrimesDemo = () => {
   const [unrelatedCount, setUnrelatedCount] = useState(0);
 
   return (
-    <section>
+    <section className="card stack">
       <h2>useMemo: calcolo costoso</h2>
       <label>
         Limite:{' '}
         <input
+          className="input"
           type="number"
           min="0"
           max={MAX_LIMIT}
@@ -37,7 +38,7 @@ const PrimesDemo = () => {
           onChange={(e) => setLimit(Math.min(Number(e.target.value) || 0, MAX_LIMIT))}
         />
       </label>
-      <button type="button" onClick={() => setUnrelatedCount((current) => current + 1)}>
+      <button className="btn" type="button" onClick={() => setUnrelatedCount((current) => current + 1)}>
         Stato non correlato: {unrelatedCount}
       </button>
       <PrimesPlain limit={limit} />
