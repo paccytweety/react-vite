@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { flattenObject, getLastObjectKey } from '../utils';
 // import SearchBoxuseRef from './SearchBoxuseRef';
-import SearchBoxUseMemo from './SearchBoxUseMemo';
+import SearchBoxUseState from './SearchBoxUseState';
 
 const Users = (props) => {
   const { userList } = props;
@@ -31,7 +31,7 @@ const Users = (props) => {
   return(
     <>
       {/* <SearchBoxuseRef onSearch={setQuery} /> */}
-      <SearchBoxUseMemo onSearch={setQuery} />
+      <SearchBoxUseState onSearch={setQuery} />
       <ul>
         {filteredUsers.map((user) => {
           return <li key={user.id}>{user.firstName}, {user.id}</li>
